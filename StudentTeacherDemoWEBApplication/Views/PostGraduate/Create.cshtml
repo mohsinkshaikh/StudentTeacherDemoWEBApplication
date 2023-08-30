@@ -1,0 +1,79 @@
+﻿@model StudentTeacherDemoWEBApplication.ViewModel.GradPost
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>PostGraduation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.postGrad.PostName" class="control-label"></label>
+                <input asp-for="@Model.postGrad.PostName" class="form-control" />
+                <span asp-validation-for="@Model.postGrad.PostName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.grad.GradID" class="control-label"></label>
+                <select id="GradForPG" class="form-control" >
+                    <option>Select Graduation</option>
+                </select>
+                <span asp-validation-for="@Model.grad.GradID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+
+
+    <script src="~/js/site.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '/GetGraduation/PostGraduate', // Replace with your controller action URL
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var dropdown = $('#GradForPG');
+                    $.each(data, function (index, category) {
+                        dropdown.append($('<option>').text(category.name).attr('value', category.id));
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+   @* <script>
+        $(document).ready(function () {
+            // AJAX request to fetch data and populate the dropdown
+            $.ajax({
+                url: '@Url.Action("GetGraduation", "PostGraduate")', // Adjust the URL to match your route
+                type: 'GET',
+                success: function (data) {                   
+                    $.each(data, function (i, data) {
+                        $("#GradForPG").append(('<option value=' + data.id + '>'+data.name+'<option>'));
+                    });
+                }
+            });
+        });
+    </script>*@
+}
+
+
+
+

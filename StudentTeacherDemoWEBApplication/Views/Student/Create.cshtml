@@ -1,0 +1,96 @@
+﻿@model StudentTeacherDemoWEBApplication.ViewModel.StudentCourseViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Courses</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MobileNumber" class="control-label"></label>
+                <input asp-for="MobileNumber" class="form-control" />
+                <span asp-validation-for="MobileNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenderRadio" class="control-label"></label>
+                <br />
+                <input type="radio" asp-for="GenderRadio" value="Male" /> Male
+                <br />
+                <input type="radio" asp-for="GenderRadio" value="Female" /> Female
+                <br />
+                <input type="radio" asp-for="GenderRadio" value="Other" /> Other
+                <span asp-validation-for="GenderRadio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenderEnum" class="control-label"></label>
+                <select id="GenEnum" asp-for="GenderEnum" class="form-control" asp-items="@Html.GetEnumSelectList<Gender>()">
+                    <option value="" disabled>Select Gender</option>
+                </select>
+                <span asp-validation-for="GenderEnum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="District" class="control-label"></label>
+                <input asp-for="District" class="form-control" />
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taluka" class="control-label"></label>
+                <input asp-for="Taluka" class="form-control" />
+                <span asp-validation-for="Taluka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Enrolled" class="control-label"></label>
+                <input asp-for="Enrolled" class="form-control" />
+                <span asp-validation-for="Enrolled" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

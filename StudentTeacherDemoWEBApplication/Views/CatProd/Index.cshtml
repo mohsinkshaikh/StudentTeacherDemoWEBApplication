@@ -1,0 +1,55 @@
+﻿@model StudentTeacherDemoWEBApplication.Models.Product
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div>
+    <table class="table table-striped">
+        <thead>
+
+            <tr>
+                <th>Category</th>
+            </tr>
+        <tbody>
+            <tr>
+                <td>
+                    <select id="categoryID" class="form-select" asp-for="ID" asp-items="@ViewBag.categories">
+                        <option disabled selected>Select Category</option>
+                    </select>
+                      @*  @Html.DropDownListFor(m => m.ID, ViewBag.categories as SelectList, "Select a category", new { @class = "form-control" })*@
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+
+            <tr>
+                <th>Products</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select id="productID" class="form-select" asp-for="ID" asp-items="@ViewBag.products">
+                        <option value="">Select products</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+
+    <script src="~/js/site.js"></script>
+    <script src="~/js/dropdownlist.js"></script>
+
+}
